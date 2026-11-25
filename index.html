@@ -1,6 +1,6 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claro · Constelaciones</title><style>
 *{box-sizing:border-box}body{margin:0;background:#f5f3ed;color:#283e36;font:16px/1.5 system-ui,sans-serif}main,header{max-width:1200px;margin:auto;padding:24px clamp(18px,4vw,58px)}header{display:flex;align-items:center;gap:12px;border-bottom:1px solid #cfcfc3}header strong{font:34px Georgia}header small{border-left:1px solid #bbbcb0;padding-left:14px;color:#56665a}h1,h2{font:normal clamp(32px,5vw,54px)/1.1 Georgia,serif;margin:12px 0 20px}h2{font-size:27px}p{margin:0 0 18px}.layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(245px,1fr);gap:22px}.panel,.theatre{border:1px solid #d2d4c7;border-radius:18px;background:#fffef8;padding:24px}.theatre{background:radial-gradient(ellipse at 45% 40%,#fffbec,#e4e5d6 85%);display:flex;flex-direction:column;min-height:430px;overflow:hidden}.stage{position:relative;flex:1;min-height:280px;isolation:isolate}.floor{position:absolute;inset:12% 3% 1%;border:1px solid #b6b79e;border-radius:50%;background:radial-gradient(ellipse at 48% 40%,#eddfbe,#d9c7a6 74%,#cab38e);box-shadow:0 6px 0 #c9b89a,0 17px 24px #514f411b}.figure{position:absolute;width:46px;height:65px;transform:translate(-50%,-88%);transition:left 2s ease-in-out,top 2s ease-in-out;--dark:#7c5035;--mid:#c38c62;--light:#f0c6a2}.figure.self{--dark:#28483d;--mid:#598373;--light:#97b6a3}.body,.head{position:absolute;background:linear-gradient(105deg,var(--light),var(--mid) 43%,var(--dark));box-shadow:inset -2px -3px 5px #0002}.body{inset:22px 8px 1px;border-radius:46% 46% 32% 32%;box-shadow:3px 5px 5px #40321f40}.head{inset:3px 11px auto;height:25px;border-radius:50%}.nose{position:absolute;top:13px;left:21px;width:6px;height:6px;border-radius:50%;background:var(--mid);box-shadow:1px 1px 2px #0003;transition:transform 1.5s}.legend{font-size:13px;display:flex;gap:16px;flex-wrap:wrap}.legend span:before{content:'●';color:#527968;margin-right:5px}.legend span+span:before{color:#b3815d}label{font-weight:600;display:block;margin:16px 0 7px}textarea,select,button{font:inherit;border-radius:9px}textarea,select{padding:10px;width:100%;border:1px solid #adb5a7;background:#fffcf6;color:inherit}textarea{resize:vertical}button{padding:11px 15px;border:1px solid #949e90;color:inherit;background:#fffdf7;cursor:pointer}button.primary{background:#324f43;color:white;border-color:#324f43}form button{width:100%;margin-top:20px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.caption{min-height:80px;border-top:1px solid #bfc1ae;padding-top:12px}.caption strong{display:block;font-size:13px}.caption em{font:normal 22px Georgia}.note{font-size:13px;color:#526255;margin:15px 0 0}[hidden]{display:none!important}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #99672e;outline-offset:3px}@media(max-width:760px){.layout{grid-template-columns:1fr}.theatre{min-height:330px;padding:15px}.stage{min-height:215px}.panel{padding:18px}.figure{scale:.85;transform-origin:0 0}}@media(prefers-reduced-motion:reduce){.figure,.nose{transition:none}}
-.stage{min-height:390px}.floor{inset:6% 1% 1%}.figure,.figure.self{width:75px;height:88px;scale:1;transform:translate(-50%,-76%);text-align:center;transition:left 1.8s ease-in-out,top 1.8s ease-in-out}.figure svg{height:72px;width:54px;display:block;margin:auto;filter:drop-shadow(1px 2px 1px #58483824)}.tag{display:inline-block;background:#fffcf4ee;color:#3e463b;border-radius:8px;padding:1px 4px;white-space:nowrap;font:600 12px/1.4 system-ui}.speaking .tag{outline:2px solid #36765c}.caption em:empty{display:block}.stage+.caption{min-height:84px}@media(max-width:760px){.stage{min-height:360px}.figure{width:66px}.tag{font-size:11px}.theatre{padding:12px}}@media(prefers-reduced-motion:reduce){.figure{transition:none}}</style></head><body><header><strong>Claro</strong><small>Constelaciones personales</small></header><main><h1 id="title">Tu constelación</h1><div class="layout"><section class="theatre" aria-label="Escena"><div class="legend"><span>Tu representante</span><span>Figuras anónimas</span></div><div class="stage" id="stage"><div class="floor"></div></div><div class="caption" aria-live="polite"><strong id="speaker">Escena inicial</strong><em id="line">Las figuras están en reposo.</em></div></section><aside class="panel"><form id="setup"><h2>Preparar la escena</h2><label for="subject">¿Qué asunto quieres constelar?</label><textarea id="subject" required maxlength="400" rows="3" placeholder="Escribe tu asunto en unas palabras"></textarea><label for="count">Figuras anónimas</label><select id="count"><option>2</option><option selected>3</option><option>4</option><option>5</option></select><button class="primary">Comenzar</button><p class="note">El asunto permanece en esta pestaña. La escena es una simulación simbólica.</p></form><section id="session" hidden><h2 id="phase">En movimiento</h2><p id="topic" style="overflow-wrap:anywhere;white-space:pre-wrap"></p><p id="guide">Puedes pausar la escena o pasar al cierre cuando quieras.</p><div class="actions"><button id="pause">Pausar</button><button id="closeScene">Ir al cierre</button><button id="again" class="primary" hidden>Nueva constelación</button></div></section></aside></div></main>
+.stage{min-height:390px}.floor{inset:6% 1% 1%}.figure,.figure.self{width:75px;height:88px;scale:1;transform:translate(-50%,-76%);text-align:center;transition:left 1.8s ease-in-out,top 1.8s ease-in-out}.figure svg{height:72px;width:54px;display:block;margin:auto;filter:drop-shadow(1px 2px 1px #58483824)}.tag{display:inline-block;background:#fffcf4ee;color:#3e463b;border-radius:8px;padding:1px 4px;white-space:nowrap;font:600 12px/1.4 system-ui}.speaking .tag{outline:2px solid #36765c}.caption em:empty{display:block}.stage+.caption{min-height:84px}@media(max-width:760px){.stage{min-height:360px}.figure{width:66px}.tag{font-size:11px}.theatre{padding:12px}}@media(prefers-reduced-motion:reduce){.figure{transition:none}}.caption #feeling{font-size:1rem;line-height:1.55;margin:.45rem 0}.caption #line:not(:empty){display:block;margin:.6rem 0}.caption{min-height:9rem}.figure.speaking .tag{background:#fff5cd}.legend span+span:before{color:#916958}</style></head><body><header><strong>Claro</strong><small>Constelaciones personales</small></header><main><h1 id="title">Tu constelación</h1><div class="layout"><section class="theatre" aria-label="Escena"><div class="legend"><span>Tu representante</span><span>Figuras anónimas</span></div><div class="stage" id="stage"><div class="floor"></div></div><div class="caption" aria-live="polite"><strong id="speaker">Escena inicial</strong><p id="feeling"></p><em id="line"></em></div></section><aside class="panel"><form id="setup"><h2>Preparar la escena</h2><label for="subject">¿Qué asunto quieres constelar?</label><textarea id="subject" required maxlength="400" rows="3" placeholder="Escribe tu asunto en unas palabras"></textarea><button class="primary">Comenzar</button><p class="note">El asunto permanece en esta pestaña. La escena es una simulación simbólica.</p></form><section id="session" hidden><h2 id="phase">En movimiento</h2><p id="topic" style="overflow-wrap:anywhere;white-space:pre-wrap"></p><p id="guide">Puedes pausar la escena o pasar al cierre cuando quieras.</p><div class="actions"><button id="pause">Pausar</button><button id="closeScene">Ir al cierre</button><button id="again" class="primary" hidden>Nueva constelación</button></div></section></aside></div></main>
 <script>
 const el = id => document.getElementById(id);
 const pick = items => items[Math.floor(Math.random() * items.length)];
@@ -18,6 +18,7 @@ const shuffle = items => {
 };
 // Each expression combines brows, mouth, shoulders, arms and head inclination.
 const expressions = {
+  'Neutral':['M18 16h6 M29 16h6','M23 26h7','M16 39l-2 16 M37 39l2 16',0],
   'Calma':['M19 17h5 M29 17h5','M22 25q4 2 8 0','M16 39l-4 17 M37 39l4 17',0],
   'Miedo':['M18 18l6 -3 M29 15l6 3','M24 25q2 -3 5 0v2h-5z','M16 39l2 10 7 -5 M37 39l-2 10 -7 -5',-5],
   'Tristeza':['M18 18l6 -3 M29 15l6 3','M22 27q4 -5 8 0','M17 41l-1 17 M36 41l1 17',8],
@@ -32,25 +33,76 @@ function avatar(f){
   const [brows,mouth,arms,tilt]=expressions[f.mood];
   const look=Math.cos(f.angle)*2.6;
   const back=Math.sin(f.angle)<-.75;
-  return '<svg viewBox="0 0 54 78" aria-hidden="true"><ellipse cx="27" cy="74" rx="16" ry="3" fill="#423b3029"/><path d="M21 51l-2 19 M32 51l3 19" stroke="#485053" stroke-width="7" stroke-linecap="round"/><path d="M19 71h-4 M35 71h4" stroke="#383633" stroke-width="5" stroke-linecap="round"/><path d="'+clothes[f.style]+'" fill="'+f.coat+'"/><path d="'+arms+'" fill="none" stroke="'+f.coat+'" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate('+tilt+' 26 33)"><rect x="23" y="26" width="8" height="10" rx="3" fill="'+f.skin+'"/><ellipse cx="26" cy="19" rx="12" ry="14" fill="'+(back?f.hair:f.skin)+'"/><path d="'+hair[f.style]+'" fill="'+f.hair+'"/>'+(back?'':'<g transform="translate('+look+' 0)" fill="#302927" stroke="#302927" stroke-width="1.7" stroke-linecap="round"><path d="'+brows+'"/><circle cx="22" cy="20" r="1"/><circle cx="31" cy="20" r="1"/><path d="'+mouth+'" fill="none"/></g>')+'</g></svg>';
+  return '<svg viewBox="0 0 54 78" aria-hidden="true"><ellipse cx="27" cy="74" rx="16" ry="3" fill="#423b3029"/><path d="M21 51l-2 19 M32 51l3 19" stroke="#485053" stroke-width="7" stroke-linecap="round"/><path d="M19 71h-4 M35 71h4" stroke="#383633" stroke-width="5" stroke-linecap="round"/><path d="'+clothes[f.cut]+'" fill="'+f.coat+'"/><path d="'+arms+'" fill="none" stroke="'+f.coat+'" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate('+tilt+' 26 33)"><rect x="23" y="26" width="8" height="10" rx="3" fill="'+f.skin+'"/><ellipse cx="26" cy="19" rx="12" ry="14" fill="'+(back?f.hair:f.skin)+'"/><path d="'+hair[f.hairstyle]+'" fill="'+f.hair+'"/>'+(back?'':'<g transform="translate('+look+' 0)" fill="#302927" stroke="#302927" stroke-width="1.7" stroke-linecap="round"><path d="'+brows+'"/><circle cx="22" cy="20" r="1"/><circle cx="31" cy="20" r="1"/><path d="'+mouth+'" fill="none"/></g>')+'</g></svg>';
 }
 function draw(f){
   f.node.style.left=f.x+'%';f.node.style.top=f.y+'%';f.node.style.zIndex=Math.round(f.y);
   f.node.innerHTML=avatar(f)+'<span class="tag">'+f.short+' · '+f.mood+'</span>';
   f.node.setAttribute('aria-label',f.name+', '+f.mood);
 }
+// Appearance and temperament vary independently of one another.
+const palette=['#8a523d','#9b6246','#a27543','#805970','#6c627e','#79594b'];
+const skinTones=['#f0c6a6','#ddab87','#c68e65','#aa7555','#88573e','#70472f'];
+const hairTones=['#3e302e','#70503c','#87705d','#a68d66','#747276','#b3aaa1'];
+const repertoire=Array.from({length:54},(_,i)=>({
+  cut:i%3,hairstyle:Math.floor(i/3)%3,skin:skinTones[Math.floor(i/9)],
+  hair:hairTones[(i+Math.floor(i/3))%6],coat:palette[(Math.floor(i/3)+Math.floor(i/9))%6]
+}));
+const sensations={
+  Neutral:['Siento el peso repartido entre los dos pies. Respiro a mi ritmo. Todavía no hay una emoción que destaque ni una dirección hacia la que quiera ir.'],
+  Interés:['Siento un cosquilleo en las manos y levanto un poco la barbilla. Me apetece mirar despacio; todavía estoy descubriendo cuánto quiero acercarme.','Se me despeja la mirada. El cuerpo se inclina un poco y siento curiosidad por lo que hay en esa dirección.'],
+  Tristeza:['Me pesan los hombros y noto un nudo en la garganta. Tengo ganas de recoger los brazos y darme un momento antes de volver a levantar la mirada.','Noto un peso suave en el pecho. Me cuesta sostener la mirada y preferiría quedarme aquí un momento.'],
+  Miedo:['Se me acorta la respiración y aprieto los dedos. Una parte de mí quiere mirar; otra necesita conservar espacio para poder hacerlo.','Noto el estómago encogido y el peso en los talones. Quiero asegurarme de que tengo espacio antes de decidir si doy otro paso.'],
+  Enfado:['Aprieto la mandíbula y noto calor en la cara. Siento con claridad hasta dónde quiero llegar y me nace el impulso de marcar esa distancia.','Se me tensan los antebrazos. Me gustaría tener más espacio y noto la fuerza con la que mis pies se afirman en el suelo.'],
+  Calma:['Noto el apoyo de las plantas de los pies y puedo soltar los hombros. Me resulta cómodo respirar aquí y dejar que el siguiente movimiento espere.','La respiración me sale regular. Puedo quedarme en este lugar y mirar alrededor con tranquilidad.'],
+  Alivio:['Suelto el aire que estaba reteniendo. Los brazos pesan menos y empiezo a sentir que puedo descansar en esta posición.','La tensión del cuello empieza a ceder. Puedo abrir las manos y sostener la mirada sin tener que decidir enseguida qué hacer.']
+};
+let pool=[],soloBeat=0,nextArrival=0,entryLimit=0,lastEntry=0;
+function describe(f,context=''){
+  figures.forEach(o=>o.node.classList.remove('speaking'));
+  f.node.classList.add('speaking');el('speaker').textContent=f.name+' · '+f.mood;
+  const options=sensations[f.mood];
+  const sensation=pick(options.length>1?options.filter(s=>s!==f.lastSensation):options);
+  f.lastSensation=sensation;
+  el('feeling').textContent=[context,sensation].filter(Boolean).join(' ');
+}
+function addFigure(x,y,mood){
+  const i=figures.length, appearance=pool.pop(),node=document.createElement('div');
+  node.className='figure';node.setAttribute('role','img');el('stage').append(node);
+  const f={...appearance,node,x,y,mood,angle:i?bearing({x,y},figures[0]):Math.PI/2,
+    need:Math.random(),trust:.25+Math.random()*.45,name:i?'Figura '+i:'Tu representante',short:i?'F'+i:'Tú'};
+  if(!i)f.coat='#356c59';
+  figures.push(f);links.forEach(row=>row.push(0));links.push(figures.map(()=>0));draw(f);return f;
+}
 function prepare(){
-  figures.forEach(f=>f.node.remove());
-  const slots=shuffle([[22,30],[50,31],[78,30],[20,63],[50,65],[80,62],[35,87],[66,88]]);
-  const styles=shuffle([0,1,2]), n=Number(el('count').value)+1;
-  figures=slots.slice(0,n).map(([x,y],i)=>{
-    const node=document.createElement('div');node.className='figure';node.setAttribute('role','img');el('stage').append(node);
-    const f={node,x:x+Math.random()*3-1.5,y:y+Math.random()*3-1.5,angle:Math.random()*Math.PI*2,style:styles[i%3],skin:pick(['#e9b590','#c88f68','#995f44']),hair:pick(['#4d3933','#624b3c','#595055']),coat:i?pick(['#956344','#976c50','#845d4c']):'#356c59',name:i?'Figura '+i:'Tu representante',short:i?'F'+i:'Tú',mood:pick(['Calma','Tristeza','Interés','Miedo','Enfado']),need:Math.random(),trust:.25+Math.random()*.45};
-    draw(f);return f;
-  });
-  links=figures.map(()=>figures.map(()=>0));
+  figures.forEach(f=>f.node.remove());figures=[];links=[];pool=shuffle(repertoire);
+  const self=addFigure(50,50,'Neutral');describe(self);
+}
+function solo(){
+  const self=figures[0];soloBeat++;
+  if(soloBeat===1){
+    self.angle=Math.random()*2*Math.PI;
+    self.x+=Math.cos(self.angle)*8;self.y+=Math.sin(self.angle)*8;
+    self.mood=pick(['Interés','Miedo','Tristeza','Calma','Enfado']);draw(self);
+    describe(self,'Al separarme del centro, noto el cambio de apoyo en las piernas.');
+  }else{
+    self.angle+=pick([-.65,.65]);draw(self);
+    describe(self,'Me detengo. Al girar un poco puedo notar con más detalle lo que me pasa.');
+  }
+}
+function arrive(){
+  // Pick a free place near the edge, keeping existing figures distinguishable.
+  const slots=shuffle([[18,29],[50,28],[82,29],[18,57],[82,57],[18,85],[50,87],[82,85]]);
+  const spot=slots.find(([x,y])=>figures.every(f=>Math.abs(f.x-x)>=21||Math.abs(f.y-y)>=22));
+  if(!spot){entryLimit=figures.length-1;return false}
+  const f=addFigure(...spot,pick(['Interés','Calma','Miedo','Tristeza','Enfado']));
+  focus=figures.length-1;target=0;quiet=0;lastEntry=turns;
+  nextArrival=turns+2+Math.floor(Math.random()*3);
+  silence();describe(f,'Acabo de entrar. Desde el borde distingo a tu representante y me doy un momento para encontrar mi sitio.');
+  return true;
 }
 function silence(){
+  el('feeling').textContent='';
   el('speaker').textContent='';el('line').textContent='';
   figures.forEach(f=>f.node.classList.remove('speaking'));
 }
@@ -87,6 +139,9 @@ function encounter(){
   a.trust=clamp(a.trust+.05);b.need=clamp(b.need+(step>0?.09:-.06));
   if(step<0)b.mood='Tristeza';else if(step>0)b.mood=b.need>.68?'Miedo':'Interés';
   draw(a);draw(b);
+  const who=b.name.toLowerCase();
+  const context=step>0?'Al acercarme a '+who+', siento más su presencia.':step<0?'Después de alejarme de '+who+', noto el espacio que se ha abierto entre ambos.':'Con '+who+' en mi campo de visión, me quedo donde estoy.';
+  describe(a,context);
   if(phrase&&turns-lastSpeech>=4&&previous!==a.mood&&links[focus][target]>2)speak(a,b,phrase);
   quiet=Math.abs(step)===0&&Math.abs(turn)<.65?quiet+1:0;
   const witness=figures.map((f,i)=>({f,i})).filter(o=>o.i!==focus&&o.i!==target)
@@ -100,7 +155,7 @@ function encounter(){
 }
 function schedule(delay){clearTimeout(timer);if(!paused)timer=setTimeout(tick,delay)}
 function beginClose(){
-  if(phase!=='live'&&phase!=='opening')return;
+  if(!['live','opening','solo'].includes(phase))return;
   clearTimeout(timer);silence();paused=false;phase='closing';
   closing=figures.map((f,i)=>({i,weight:Math.max(...links[i])})).sort((a,b)=>a.weight-b.weight).map(o=>o.i);
   el('phase').textContent='Movimiento de cierre';el('closeScene').hidden=true;
@@ -108,19 +163,26 @@ function beginClose(){
 }
 function tick(){
   if(paused)return;
-  if(phase==='opening'){phase='live';el('phase').textContent='En movimiento'}
+  if(phase==='opening'){phase='solo';el('phase').textContent='Tu movimiento'}
+  if(phase==='solo'){
+    if(soloBeat<2){solo();schedule(9500);return}
+    phase='live';el('phase').textContent='Encuentro';arrive();schedule(9500);return;
+  }
   if(phase==='live'){
+    if(figures.length-1<entryLimit && turns>=nextArrival && arrive()){schedule(9500);return}
     encounter();
-    if((turns>=9&&quiet>=3)||turns>=20){schedule(4800);phase='settling';return}
-    schedule(el('line').textContent?6300:3200+Math.random()*2000);return;
+    // A settled group may finish before using all available places.
+    if(quiet>=3 && turns-lastEntry>=3 && figures.length>1)entryLimit=figures.length-1;
+    if(figures.length-1>=entryLimit && turns-lastEntry>=3 && (quiet>=2||turns>=Math.max(9,lastEntry+5))){schedule(4800);phase='settling';return}
+    schedule(9500+Math.random()*1800);return;
   }
   if(phase==='settling'){phase='live';beginClose();return}
   if(phase!=='closing')return;
-  silence();
   if(!closing.length){
     phase='final';el('phase').textContent='Escena sanadora';el('guide').textContent='Puedes contemplar esta imagen todo el tiempo que quieras.';
     el('pause').hidden=true;el('again').hidden=false;return;
   }
+  silence();
   const i=closing.shift(),f=figures[i],j=strongest(i),b=figures[j],hasHistory=links[i][j]>0;
   if(!turns && !closing.length){f.mood='Calma';draw(f);el('speaker').textContent=f.name;el('line').textContent='«Aquí puedo estar.»';f.node.classList.add('speaking')}
   if(hasHistory){
@@ -130,15 +192,18 @@ function tick(){
     f.mood=space?'Calma':'Alivio';draw(f);
     if(!closing.length)speak(f,b,space?'Desde aquí puedo mirarte.':'Aquí hay sitio para los dos.');
   }
-  schedule(closing.length?2000:5000);
+  const phrase=el('line').textContent, speaker=el('speaker').textContent;
+  describe(f,'Al detenerme en este lugar, vuelvo a prestar atención a mi cuerpo.');
+  if(phrase)el('speaker').textContent=speaker;
+  schedule(8500);
 }
-el('count').onchange=prepare;
+
 el('setup').onsubmit=e=>{
   e.preventDefault();const subject=el('subject').value.trim();
   if(!subject){el('subject').value='';el('subject').reportValidity();return}
-  turns=0;quiet=0;lastSpeech=-10;focus=0;target=strongest(0);phase='opening';paused=false;
+  turns=0;quiet=0;lastSpeech=-10;focus=0;target=0;soloBeat=0;entryLimit=1+Math.floor(Math.random()*6);lastEntry=0;nextArrival=0;phase='opening';paused=false;
   el('topic').textContent=subject;el('setup').hidden=true;el('session').hidden=false;
-  el('phase').textContent='Imagen inicial';el('phase').tabIndex=-1;el('phase').focus();silence();schedule(6000);
+  el('phase').textContent='Imagen inicial';el('phase').tabIndex=-1;el('phase').focus();el('line').textContent='';describe(figures[0]);schedule(6000);
 };
 el('pause').onclick=()=>{
   paused=!paused;el('pause').textContent=paused?'Continuar':'Pausar';
