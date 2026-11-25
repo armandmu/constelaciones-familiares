@@ -1,68 +1,150 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claro · Constelaciones</title><style>
 *{box-sizing:border-box}body{margin:0;background:#f5f3ed;color:#283e36;font:16px/1.5 system-ui,sans-serif}main,header{max-width:1200px;margin:auto;padding:24px clamp(18px,4vw,58px)}header{display:flex;align-items:center;gap:12px;border-bottom:1px solid #cfcfc3}header strong{font:34px Georgia}header small{border-left:1px solid #bbbcb0;padding-left:14px;color:#56665a}h1,h2{font:normal clamp(32px,5vw,54px)/1.1 Georgia,serif;margin:12px 0 20px}h2{font-size:27px}p{margin:0 0 18px}.layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(245px,1fr);gap:22px}.panel,.theatre{border:1px solid #d2d4c7;border-radius:18px;background:#fffef8;padding:24px}.theatre{background:radial-gradient(ellipse at 45% 40%,#fffbec,#e4e5d6 85%);display:flex;flex-direction:column;min-height:430px;overflow:hidden}.stage{position:relative;flex:1;min-height:280px;isolation:isolate}.floor{position:absolute;inset:12% 3% 1%;border:1px solid #b6b79e;border-radius:50%;background:radial-gradient(ellipse at 48% 40%,#eddfbe,#d9c7a6 74%,#cab38e);box-shadow:0 6px 0 #c9b89a,0 17px 24px #514f411b}.figure{position:absolute;width:46px;height:65px;transform:translate(-50%,-88%);transition:left 2s ease-in-out,top 2s ease-in-out;--dark:#7c5035;--mid:#c38c62;--light:#f0c6a2}.figure.self{--dark:#28483d;--mid:#598373;--light:#97b6a3}.body,.head{position:absolute;background:linear-gradient(105deg,var(--light),var(--mid) 43%,var(--dark));box-shadow:inset -2px -3px 5px #0002}.body{inset:22px 8px 1px;border-radius:46% 46% 32% 32%;box-shadow:3px 5px 5px #40321f40}.head{inset:3px 11px auto;height:25px;border-radius:50%}.nose{position:absolute;top:13px;left:21px;width:6px;height:6px;border-radius:50%;background:var(--mid);box-shadow:1px 1px 2px #0003;transition:transform 1.5s}.legend{font-size:13px;display:flex;gap:16px;flex-wrap:wrap}.legend span:before{content:'●';color:#527968;margin-right:5px}.legend span+span:before{color:#b3815d}label{font-weight:600;display:block;margin:16px 0 7px}textarea,select,button{font:inherit;border-radius:9px}textarea,select{padding:10px;width:100%;border:1px solid #adb5a7;background:#fffcf6;color:inherit}textarea{resize:vertical}button{padding:11px 15px;border:1px solid #949e90;color:inherit;background:#fffdf7;cursor:pointer}button.primary{background:#324f43;color:white;border-color:#324f43}form button{width:100%;margin-top:20px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.caption{min-height:80px;border-top:1px solid #bfc1ae;padding-top:12px}.caption strong{display:block;font-size:13px}.caption em{font:normal 22px Georgia}.note{font-size:13px;color:#526255;margin:15px 0 0}[hidden]{display:none!important}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #99672e;outline-offset:3px}@media(max-width:760px){.layout{grid-template-columns:1fr}.theatre{min-height:330px;padding:15px}.stage{min-height:215px}.panel{padding:18px}.figure{scale:.85;transform-origin:0 0}}@media(prefers-reduced-motion:reduce){.figure,.nose{transition:none}}
-</style></head><body><header><strong>Claro</strong><small>Constelaciones personales</small></header><main><h1 id="title">Tu constelación</h1><div class="layout"><section class="theatre" aria-label="Escena"><div class="legend"><span>Tu representante</span><span>Figuras anónimas</span></div><div class="stage" id="stage"><div class="floor"></div></div><div class="caption" aria-live="polite"><strong id="speaker">Escena inicial</strong><em id="line">Las figuras están en reposo.</em></div></section><aside class="panel"><form id="setup"><h2>Preparar la escena</h2><label for="subject">¿Qué asunto quieres constelar?</label><textarea id="subject" required maxlength="400" rows="3" placeholder="Escribe tu asunto en unas palabras"></textarea><label for="count">Figuras anónimas</label><select id="count"><option>2</option><option selected>3</option><option>4</option><option>5</option></select><button class="primary">Comenzar</button><p class="note">El asunto permanece en esta pestaña. La escena es una simulación simbólica.</p></form><section id="session" hidden><h2 id="phase">En movimiento</h2><p id="topic" style="overflow-wrap:anywhere;white-space:pre-wrap"></p><p id="guide">Puedes observar en silencio o dejar que la escena llegue al cierre cuando quieras.</p><div class="actions"><button id="pause">Pausar</button><button id="closeScene">Ir al cierre</button><button id="again" class="primary" hidden>Nueva constelación</button></div></section></aside></div></main>
+.stage{min-height:390px}.floor{inset:6% 1% 1%}.figure,.figure.self{width:75px;height:88px;scale:1;transform:translate(-50%,-76%);text-align:center;transition:left 1.8s ease-in-out,top 1.8s ease-in-out}.figure svg{height:72px;width:54px;display:block;margin:auto;filter:drop-shadow(1px 2px 1px #58483824)}.tag{display:inline-block;background:#fffcf4ee;color:#3e463b;border-radius:8px;padding:1px 4px;white-space:nowrap;font:600 12px/1.4 system-ui}.speaking .tag{outline:2px solid #36765c}.caption em:empty{display:block}.stage+.caption{min-height:84px}@media(max-width:760px){.stage{min-height:360px}.figure{width:66px}.tag{font-size:11px}.theatre{padding:12px}}@media(prefers-reduced-motion:reduce){.figure{transition:none}}</style></head><body><header><strong>Claro</strong><small>Constelaciones personales</small></header><main><h1 id="title">Tu constelación</h1><div class="layout"><section class="theatre" aria-label="Escena"><div class="legend"><span>Tu representante</span><span>Figuras anónimas</span></div><div class="stage" id="stage"><div class="floor"></div></div><div class="caption" aria-live="polite"><strong id="speaker">Escena inicial</strong><em id="line">Las figuras están en reposo.</em></div></section><aside class="panel"><form id="setup"><h2>Preparar la escena</h2><label for="subject">¿Qué asunto quieres constelar?</label><textarea id="subject" required maxlength="400" rows="3" placeholder="Escribe tu asunto en unas palabras"></textarea><label for="count">Figuras anónimas</label><select id="count"><option>2</option><option selected>3</option><option>4</option><option>5</option></select><button class="primary">Comenzar</button><p class="note">El asunto permanece en esta pestaña. La escena es una simulación simbólica.</p></form><section id="session" hidden><h2 id="phase">En movimiento</h2><p id="topic" style="overflow-wrap:anywhere;white-space:pre-wrap"></p><p id="guide">Puedes pausar la escena o pasar al cierre cuando quieras.</p><div class="actions"><button id="pause">Pausar</button><button id="closeScene">Ir al cierre</button><button id="again" class="primary" hidden>Nueva constelación</button></div></section></aside></div></main>
 <script>
-const el=id=>document.getElementById(id);
-let figures=[],turn=0,timer,paused=false,phase='setup',closingStep,closingPair,closingMode;
-const random=(low,high)=>low+Math.random()*(high-low);
-const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
-function caption(who,what){el('speaker').textContent=who;el('line').textContent=what}
+const el = id => document.getElementById(id);
+const pick = items => items[Math.floor(Math.random() * items.length)];
+const clamp = value => Math.max(0, Math.min(1, value));
+const distance = (a,b) => Math.hypot(a.x-b.x,a.y-b.y);
+const bearing = (a,b) => Math.atan2(b.y-a.y,b.x-a.x);
+const delta = (a,b) => Math.atan2(Math.sin(b-a),Math.cos(b-a));
+const shuffle = items => {
+  const result = [...items];
+  for(let i=result.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [result[i],result[j]]=[result[j],result[i]];
+  }
+  return result;
+};
+// Each expression combines brows, mouth, shoulders, arms and head inclination.
+const expressions = {
+  'Calma':['M19 17h5 M29 17h5','M22 25q4 2 8 0','M16 39l-4 17 M37 39l4 17',0],
+  'Miedo':['M18 18l6 -3 M29 15l6 3','M24 25q2 -3 5 0v2h-5z','M16 39l2 10 7 -5 M37 39l-2 10 -7 -5',-5],
+  'Tristeza':['M18 18l6 -3 M29 15l6 3','M22 27q4 -5 8 0','M17 41l-1 17 M36 41l1 17',8],
+  'Enfado':['M18 15l6 3 M29 18l6 -3','M22 26h9','M16 39l-6 9 8 5 M37 39l6 9 -8 5',-3],
+  'Interés':['M18 15q3 -3 7 0 M29 17h5','M23 25q4 2 7 -1','M16 39l-4 13 M36 39l8 4 3 -6',5],
+  'Alivio':['M18 16q3 -2 6 0 M29 16q3 -2 6 0','M21 24q5 7 11 0','M16 40l-6 13 M37 40l7 12',2]
+};
+const hair = ['M14 20V14Q15 2 27 4Q41 4 39 18L34 14L32 10Q24 16 16 13Z','M13 29Q9 8 20 5Q35 -1 40 12L41 31L35 29L35 14Q27 15 23 9Q20 15 16 16L17 29Z','M14 18Q8 14 13 10Q11 5 18 6Q20 0 26 5Q32 0 35 6Q43 5 39 13L36 18L34 12Q24 17 17 12Z'];
+const clothes=['M15 35Q26 31 38 35L36 55H17Z','M18 35Q26 32 35 35L34 44L39 56H14L19 44Z','M16 35Q26 30 37 35L38 55H15Z'];
+let figures=[], links=[], focus=0, target=1, phase='setup', turns=0, quiet=0, lastSpeech=-10, closing=[], timer, paused=false;
+function avatar(f){
+  const [brows,mouth,arms,tilt]=expressions[f.mood];
+  const look=Math.cos(f.angle)*2.6;
+  const back=Math.sin(f.angle)<-.75;
+  return '<svg viewBox="0 0 54 78" aria-hidden="true"><ellipse cx="27" cy="74" rx="16" ry="3" fill="#423b3029"/><path d="M21 51l-2 19 M32 51l3 19" stroke="#485053" stroke-width="7" stroke-linecap="round"/><path d="M19 71h-4 M35 71h4" stroke="#383633" stroke-width="5" stroke-linecap="round"/><path d="'+clothes[f.style]+'" fill="'+f.coat+'"/><path d="'+arms+'" fill="none" stroke="'+f.coat+'" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate('+tilt+' 26 33)"><rect x="23" y="26" width="8" height="10" rx="3" fill="'+f.skin+'"/><ellipse cx="26" cy="19" rx="12" ry="14" fill="'+(back?f.hair:f.skin)+'"/><path d="'+hair[f.style]+'" fill="'+f.hair+'"/>'+(back?'':'<g transform="translate('+look+' 0)" fill="#302927" stroke="#302927" stroke-width="1.7" stroke-linecap="round"><path d="'+brows+'"/><circle cx="22" cy="20" r="1"/><circle cx="31" cy="20" r="1"/><path d="'+mouth+'" fill="none"/></g>')+'</g></svg>';
+}
 function draw(f){
- f.node.style.left=f.x+'%';f.node.style.top=f.y+'%';f.node.style.zIndex=Math.round(f.y);
- f.node.querySelector('.nose').style.transform='translate('+10*Math.cos(f.angle)+'px,'+4*Math.sin(f.angle)+'px)';
+  f.node.style.left=f.x+'%';f.node.style.top=f.y+'%';f.node.style.zIndex=Math.round(f.y);
+  f.node.innerHTML=avatar(f)+'<span class="tag">'+f.short+' · '+f.mood+'</span>';
+  f.node.setAttribute('aria-label',f.name+', '+f.mood);
 }
 function prepare(){
- figures.forEach(f=>f.node.remove());figures=[];
- const n=Number(el('count').value)+1,offset=random(-.28,.28);
- for(let i=0;i<n;i++){
-  const a=offset+i*2*Math.PI/n,node=document.createElement('div');
-  node.className='figure'+(i?'':' self');node.innerHTML='<i class="body"></i><i class="head"></i><i class="nose"></i>';
-  const name=i?'Figura '+i:'Tu representante';node.setAttribute('role','img');node.setAttribute('aria-label',name);
-  el('stage').append(node);
-  const f={node,name,x:50+29*Math.cos(a),y:58+24*Math.sin(a),angle:a+Math.PI,tension:random(.2,.8),interest:random(.2,.85),steps:0};
-  figures.push(f);draw(f);
- }
+  figures.forEach(f=>f.node.remove());
+  const slots=shuffle([[22,30],[50,31],[78,30],[20,63],[50,65],[80,62],[35,87],[66,88]]);
+  const styles=shuffle([0,1,2]), n=Number(el('count').value)+1;
+  figures=slots.slice(0,n).map(([x,y],i)=>{
+    const node=document.createElement('div');node.className='figure';node.setAttribute('role','img');el('stage').append(node);
+    const f={node,x:x+Math.random()*3-1.5,y:y+Math.random()*3-1.5,angle:Math.random()*Math.PI*2,style:styles[i%3],skin:pick(['#e9b590','#c88f68','#995f44']),hair:pick(['#4d3933','#624b3c','#595055']),coat:i?pick(['#956344','#976c50','#845d4c']):'#356c59',name:i?'Figura '+i:'Tu representante',short:i?'F'+i:'Tú',mood:pick(['Calma','Tristeza','Interés','Miedo','Enfado']),need:Math.random(),trust:.25+Math.random()*.45};
+    draw(f);return f;
+  });
+  links=figures.map(()=>figures.map(()=>0));
 }
-function face(a,b){a.angle=Math.atan2(b.y-a.y,b.x-a.x)}
-function move(f,t,step){
- const d=Math.hypot(t.x-f.x,t.y-f.y)||1,x=f.x+step*(t.x-f.x)/d,y=f.y+step*(t.y-f.y)/d;
- if(((x-50)/39)**2+((y-57)/32)**2>1||figures.some(o=>o!==f&&Math.hypot(o.x-x,o.y-y)<13))return false;
- f.x=x;f.y=y;f.steps+=step;return true;
+function silence(){
+  el('speaker').textContent='';el('line').textContent='';
+  figures.forEach(f=>f.node.classList.remove('speaking'));
 }
-function next(delay=3600){clearTimeout(timer);if(!paused)timer=setTimeout(tick,delay)}
+function speak(a,b,line){
+  el('speaker').textContent=a.name+' → '+b.name;el('line').textContent='«'+line+'»';a.node.classList.add('speaking');lastSpeech=turns;
+}
+function shift(f,t,step){
+  const angle=bearing(f,t), x=f.x+Math.cos(angle)*step,y=f.y+Math.sin(angle)*step;
+  if(x<17||x>83||y<28||y>89||figures.some(o=>o!==f&&Math.abs(o.x-x)<20&&Math.abs(o.y-y)<20))return false;
+  f.x=x;f.y=y;return true;
+}
+function strongest(i){
+  const options=shuffle(figures.map((_,j)=>j).filter(j=>j!==i));
+  return options.sort((a,b)=>links[i][b]-links[i][a])[0];
+}
 function encounter(){
- const f=figures[Math.floor(Math.random()*figures.length)],others=figures.filter(o=>o!==f);
- const t=others[Math.floor(Math.random()*others.length)],d=Math.hypot(t.x-f.x,t.y-f.y);
- f.tension=clamp(f.tension*.78+(d<28?.27:.06)+random(-.12,.15),0,1);
- f.interest=clamp(f.interest+random(-.12,.16),0,1);face(f,t);
- const step=f.tension>.59?-6:f.interest>.43?7:0;
- const moved=step&&move(f,t,step);
- if(moved)t.tension=clamp(t.tension+(step>0?.09:-.07),0,1);
- draw(f);
- const says=turn%3===0;
- caption(f.name,says?(moved?(step>0?'«Ahora puedo acercarme un poco.»':'«Necesito este espacio.»'):'«Puedo quedarme aquí.»'):(moved?(step>0?'Da un paso hacia la otra figura.':'Retrocede despacio.'):'Permanece en su sitio y cambia la mirada.'));
+  silence();turns++;
+  const a=figures[focus],b=figures[target],d=distance(a,b),previous=a.mood;
+  const angle=bearing(a,b), turn=delta(a.angle,angle);
+  const approach=a.trust+(d>36?.20:0), guard=a.need+(d<29?.3:0);
+  let step=0, phrase='';
+  if(Math.abs(turn)>1.05){
+    a.angle+=turn*.68;a.mood=guard>approach?'Miedo':'Interés';
+  }else if(guard>approach+.13){
+    step=shift(a,b,-5)?-5:0;a.mood=a.need>.76?'Enfado':'Miedo';
+    a.need=clamp(a.need-.16);phrase='Aquí necesito un poco de espacio.';
+  }else if(approach>guard+.16&&d>29){
+    step=shift(a,b,5)?5:0;a.mood='Interés';phrase='Puedo dar este paso hacia ti.';
+  }else{
+    a.angle=angle;a.mood=previous==='Tristeza'?'Tristeza':'Alivio';
+    phrase=previous==='Miedo'?'Ahora puedo mirarte.':'Puedo quedarme aquí contigo.';
+  }
+  links[focus][target]+=1+Math.abs(step)/5;links[target][focus]+=.7;
+  a.trust=clamp(a.trust+.05);b.need=clamp(b.need+(step>0?.09:-.06));
+  if(step<0)b.mood='Tristeza';else if(step>0)b.mood=b.need>.68?'Miedo':'Interés';
+  draw(a);draw(b);
+  if(phrase&&turns-lastSpeech>=4&&previous!==a.mood&&links[focus][target]>2)speak(a,b,phrase);
+  quiet=Math.abs(step)===0&&Math.abs(turn)<.65?quiet+1:0;
+  const witness=figures.map((f,i)=>({f,i})).filter(o=>o.i!==focus&&o.i!==target)
+    .sort((u,v)=>distance(u.f,a)-distance(v.f,a))[0];
+  if(step&&witness&&Math.abs(delta(witness.f.angle,bearing(witness.f,a)))<1.4){
+    witness.f.angle+=delta(witness.f.angle,bearing(witness.f,a))*.5;
+    links[witness.i][focus]+=.9;draw(witness.f);
+  }
+  const former=focus;focus=target;target=former;
+  if(turns%3===0&&witness)target=witness.i;
 }
+function schedule(delay){clearTimeout(timer);if(!paused)timer=setTimeout(tick,delay)}
 function beginClose(){
- if(phase!=='live')return;
- clearTimeout(timer);phase='closing';paused=false;closingStep=0;
- const self=figures[0],near=figures.slice(1).sort((a,b)=>Math.hypot(a.x-self.x,a.y-self.y)-Math.hypot(b.x-self.x,b.y-self.y))[0];
- closingPair=[self,near];closingMode=self.tension>.56||self.steps<0?'space':self.interest>.56?'near':'look';
- el('phase').textContent='Movimiento de cierre';el('pause').hidden=true;el('closeScene').hidden=true;
- el('guide').textContent='Los últimos movimientos dan paso a la imagen final.';tick();
+  if(phase!=='live'&&phase!=='opening')return;
+  clearTimeout(timer);silence();paused=false;phase='closing';
+  closing=figures.map((f,i)=>({i,weight:Math.max(...links[i])})).sort((a,b)=>a.weight-b.weight).map(o=>o.i);
+  el('phase').textContent='Movimiento de cierre';el('closeScene').hidden=true;
+  el('pause').textContent='Pausar';el('guide').textContent='Observa dónde encuentra su lugar cada figura.';tick();
 }
 function tick(){
- if(phase==='live'){if(++turn>12){beginClose();return}encounter();next();return}
- if(phase!=='closing')return;
- const [self,other]=closingPair;
- if(closingStep===0){face(other,self);draw(other);caption(other.name,'Se vuelve hacia tu representante.')}
- if(closingStep===1){face(self,other);if(closingMode==='near')move(self,other,5);draw(self);caption(self.name,closingMode==='space'?'«Aquí puedo estar.»':closingMode==='near'?'«Te veo. También hay un lugar para mí.»':'«Ahora puedo mirarte.»')}
- if(closingStep===2){phase='final';el('phase').textContent='Escena sanadora';el('guide').textContent='La imagen permanece aquí todo el tiempo que quieras.';el('again').hidden=false;return}
- closingStep++;next(3400);
+  if(paused)return;
+  if(phase==='opening'){phase='live';el('phase').textContent='En movimiento'}
+  if(phase==='live'){
+    encounter();
+    if((turns>=9&&quiet>=3)||turns>=20){schedule(4800);phase='settling';return}
+    schedule(el('line').textContent?6300:3200+Math.random()*2000);return;
+  }
+  if(phase==='settling'){phase='live';beginClose();return}
+  if(phase!=='closing')return;
+  silence();
+  if(!closing.length){
+    phase='final';el('phase').textContent='Escena sanadora';el('guide').textContent='Puedes contemplar esta imagen todo el tiempo que quieras.';
+    el('pause').hidden=true;el('again').hidden=false;return;
+  }
+  const i=closing.shift(),f=figures[i],j=strongest(i),b=figures[j],hasHistory=links[i][j]>0;
+  if(!turns && !closing.length){f.mood='Calma';draw(f);el('speaker').textContent=f.name;el('line').textContent='«Aquí puedo estar.»';f.node.classList.add('speaking')}
+  if(hasHistory){
+    const space=f.need>f.trust, angle=bearing(f,b);
+    if(space){shift(f,b,-4);f.angle+=delta(f.angle,angle)*.35}
+    else{f.angle+=delta(f.angle,angle)*.85;if(f.mood==='Interés')shift(f,b,3)}
+    f.mood=space?'Calma':'Alivio';draw(f);
+    if(!closing.length)speak(f,b,space?'Desde aquí puedo mirarte.':'Aquí hay sitio para los dos.');
+  }
+  schedule(closing.length?2000:5000);
 }
 el('count').onchange=prepare;
-el('setup').onsubmit=e=>{e.preventDefault();const topic=el('subject').value.trim();if(!topic){el('subject').value='';el('subject').reportValidity();return}phase='live';turn=0;paused=false;el('topic').textContent=topic;el('setup').hidden=true;el('session').hidden=false;el('phase').textContent='En movimiento';el('phase').tabIndex=-1;el('phase').focus();tick()};
-el('pause').onclick=()=>{paused=!paused;el('pause').textContent=paused?'Continuar':'Pausar';el('phase').textContent=paused?'En pausa':'En movimiento';if(paused)clearTimeout(timer);else next(500)};
-el('closeScene').onclick=beginClose;
-el('again').onclick=()=>{location.reload()};
+el('setup').onsubmit=e=>{
+  e.preventDefault();const subject=el('subject').value.trim();
+  if(!subject){el('subject').value='';el('subject').reportValidity();return}
+  turns=0;quiet=0;lastSpeech=-10;focus=0;target=strongest(0);phase='opening';paused=false;
+  el('topic').textContent=subject;el('setup').hidden=true;el('session').hidden=false;
+  el('phase').textContent='Imagen inicial';el('phase').tabIndex=-1;el('phase').focus();silence();schedule(6000);
+};
+el('pause').onclick=()=>{
+  paused=!paused;el('pause').textContent=paused?'Continuar':'Pausar';
+  if(paused)clearTimeout(timer);else schedule(600);
+};
+el('closeScene').onclick=()=>{if(phase==='settling')phase='live';beginClose()};
+el('again').onclick=()=>location.reload();
 prepare();
 </script></body></html>
