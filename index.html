@@ -1,0 +1,68 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claro · Constelaciones</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f3ed;color:#283e36;font:16px/1.5 system-ui,sans-serif}main,header{max-width:1200px;margin:auto;padding:24px clamp(18px,4vw,58px)}header{display:flex;align-items:center;gap:12px;border-bottom:1px solid #cfcfc3}header strong{font:34px Georgia}header small{border-left:1px solid #bbbcb0;padding-left:14px;color:#56665a}h1,h2{font:normal clamp(32px,5vw,54px)/1.1 Georgia,serif;margin:12px 0 20px}h2{font-size:27px}p{margin:0 0 18px}.layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(245px,1fr);gap:22px}.panel,.theatre{border:1px solid #d2d4c7;border-radius:18px;background:#fffef8;padding:24px}.theatre{background:radial-gradient(ellipse at 45% 40%,#fffbec,#e4e5d6 85%);display:flex;flex-direction:column;min-height:430px;overflow:hidden}.stage{position:relative;flex:1;min-height:280px;isolation:isolate}.floor{position:absolute;inset:12% 3% 1%;border:1px solid #b6b79e;border-radius:50%;background:radial-gradient(ellipse at 48% 40%,#eddfbe,#d9c7a6 74%,#cab38e);box-shadow:0 6px 0 #c9b89a,0 17px 24px #514f411b}.figure{position:absolute;width:46px;height:65px;transform:translate(-50%,-88%);transition:left 2s ease-in-out,top 2s ease-in-out;--dark:#7c5035;--mid:#c38c62;--light:#f0c6a2}.figure.self{--dark:#28483d;--mid:#598373;--light:#97b6a3}.body,.head{position:absolute;background:linear-gradient(105deg,var(--light),var(--mid) 43%,var(--dark));box-shadow:inset -2px -3px 5px #0002}.body{inset:22px 8px 1px;border-radius:46% 46% 32% 32%;box-shadow:3px 5px 5px #40321f40}.head{inset:3px 11px auto;height:25px;border-radius:50%}.nose{position:absolute;top:13px;left:21px;width:6px;height:6px;border-radius:50%;background:var(--mid);box-shadow:1px 1px 2px #0003;transition:transform 1.5s}.legend{font-size:13px;display:flex;gap:16px;flex-wrap:wrap}.legend span:before{content:'●';color:#527968;margin-right:5px}.legend span+span:before{color:#b3815d}label{font-weight:600;display:block;margin:16px 0 7px}textarea,select,button{font:inherit;border-radius:9px}textarea,select{padding:10px;width:100%;border:1px solid #adb5a7;background:#fffcf6;color:inherit}textarea{resize:vertical}button{padding:11px 15px;border:1px solid #949e90;color:inherit;background:#fffdf7;cursor:pointer}button.primary{background:#324f43;color:white;border-color:#324f43}form button{width:100%;margin-top:20px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.caption{min-height:80px;border-top:1px solid #bfc1ae;padding-top:12px}.caption strong{display:block;font-size:13px}.caption em{font:normal 22px Georgia}.note{font-size:13px;color:#526255;margin:15px 0 0}[hidden]{display:none!important}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #99672e;outline-offset:3px}@media(max-width:760px){.layout{grid-template-columns:1fr}.theatre{min-height:330px;padding:15px}.stage{min-height:215px}.panel{padding:18px}.figure{scale:.85;transform-origin:0 0}}@media(prefers-reduced-motion:reduce){.figure,.nose{transition:none}}
+</style></head><body><header><strong>Claro</strong><small>Constelaciones personales</small></header><main><h1 id="title">Tu constelación</h1><div class="layout"><section class="theatre" aria-label="Escena"><div class="legend"><span>Tu representante</span><span>Figuras anónimas</span></div><div class="stage" id="stage"><div class="floor"></div></div><div class="caption" aria-live="polite"><strong id="speaker">Escena inicial</strong><em id="line">Las figuras están en reposo.</em></div></section><aside class="panel"><form id="setup"><h2>Preparar la escena</h2><label for="subject">¿Qué asunto quieres constelar?</label><textarea id="subject" required maxlength="400" rows="3" placeholder="Escribe tu asunto en unas palabras"></textarea><label for="count">Figuras anónimas</label><select id="count"><option>2</option><option selected>3</option><option>4</option><option>5</option></select><button class="primary">Comenzar</button><p class="note">El asunto permanece en esta pestaña. La escena es una simulación simbólica.</p></form><section id="session" hidden><h2 id="phase">En movimiento</h2><p id="topic" style="overflow-wrap:anywhere;white-space:pre-wrap"></p><p id="guide">Puedes observar en silencio o dejar que la escena llegue al cierre cuando quieras.</p><div class="actions"><button id="pause">Pausar</button><button id="closeScene">Ir al cierre</button><button id="again" class="primary" hidden>Nueva constelación</button></div></section></aside></div></main>
+<script>
+const el=id=>document.getElementById(id);
+let figures=[],turn=0,timer,paused=false,phase='setup',closingStep,closingPair,closingMode;
+const random=(low,high)=>low+Math.random()*(high-low);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function caption(who,what){el('speaker').textContent=who;el('line').textContent=what}
+function draw(f){
+ f.node.style.left=f.x+'%';f.node.style.top=f.y+'%';f.node.style.zIndex=Math.round(f.y);
+ f.node.querySelector('.nose').style.transform='translate('+10*Math.cos(f.angle)+'px,'+4*Math.sin(f.angle)+'px)';
+}
+function prepare(){
+ figures.forEach(f=>f.node.remove());figures=[];
+ const n=Number(el('count').value)+1,offset=random(-.28,.28);
+ for(let i=0;i<n;i++){
+  const a=offset+i*2*Math.PI/n,node=document.createElement('div');
+  node.className='figure'+(i?'':' self');node.innerHTML='<i class="body"></i><i class="head"></i><i class="nose"></i>';
+  const name=i?'Figura '+i:'Tu representante';node.setAttribute('role','img');node.setAttribute('aria-label',name);
+  el('stage').append(node);
+  const f={node,name,x:50+29*Math.cos(a),y:58+24*Math.sin(a),angle:a+Math.PI,tension:random(.2,.8),interest:random(.2,.85),steps:0};
+  figures.push(f);draw(f);
+ }
+}
+function face(a,b){a.angle=Math.atan2(b.y-a.y,b.x-a.x)}
+function move(f,t,step){
+ const d=Math.hypot(t.x-f.x,t.y-f.y)||1,x=f.x+step*(t.x-f.x)/d,y=f.y+step*(t.y-f.y)/d;
+ if(((x-50)/39)**2+((y-57)/32)**2>1||figures.some(o=>o!==f&&Math.hypot(o.x-x,o.y-y)<13))return false;
+ f.x=x;f.y=y;f.steps+=step;return true;
+}
+function next(delay=3600){clearTimeout(timer);if(!paused)timer=setTimeout(tick,delay)}
+function encounter(){
+ const f=figures[Math.floor(Math.random()*figures.length)],others=figures.filter(o=>o!==f);
+ const t=others[Math.floor(Math.random()*others.length)],d=Math.hypot(t.x-f.x,t.y-f.y);
+ f.tension=clamp(f.tension*.78+(d<28?.27:.06)+random(-.12,.15),0,1);
+ f.interest=clamp(f.interest+random(-.12,.16),0,1);face(f,t);
+ const step=f.tension>.59?-6:f.interest>.43?7:0;
+ const moved=step&&move(f,t,step);
+ if(moved)t.tension=clamp(t.tension+(step>0?.09:-.07),0,1);
+ draw(f);
+ const says=turn%3===0;
+ caption(f.name,says?(moved?(step>0?'«Ahora puedo acercarme un poco.»':'«Necesito este espacio.»'):'«Puedo quedarme aquí.»'):(moved?(step>0?'Da un paso hacia la otra figura.':'Retrocede despacio.'):'Permanece en su sitio y cambia la mirada.'));
+}
+function beginClose(){
+ if(phase!=='live')return;
+ clearTimeout(timer);phase='closing';paused=false;closingStep=0;
+ const self=figures[0],near=figures.slice(1).sort((a,b)=>Math.hypot(a.x-self.x,a.y-self.y)-Math.hypot(b.x-self.x,b.y-self.y))[0];
+ closingPair=[self,near];closingMode=self.tension>.56||self.steps<0?'space':self.interest>.56?'near':'look';
+ el('phase').textContent='Movimiento de cierre';el('pause').hidden=true;el('closeScene').hidden=true;
+ el('guide').textContent='Los últimos movimientos dan paso a la imagen final.';tick();
+}
+function tick(){
+ if(phase==='live'){if(++turn>12){beginClose();return}encounter();next();return}
+ if(phase!=='closing')return;
+ const [self,other]=closingPair;
+ if(closingStep===0){face(other,self);draw(other);caption(other.name,'Se vuelve hacia tu representante.')}
+ if(closingStep===1){face(self,other);if(closingMode==='near')move(self,other,5);draw(self);caption(self.name,closingMode==='space'?'«Aquí puedo estar.»':closingMode==='near'?'«Te veo. También hay un lugar para mí.»':'«Ahora puedo mirarte.»')}
+ if(closingStep===2){phase='final';el('phase').textContent='Escena sanadora';el('guide').textContent='La imagen permanece aquí todo el tiempo que quieras.';el('again').hidden=false;return}
+ closingStep++;next(3400);
+}
+el('count').onchange=prepare;
+el('setup').onsubmit=e=>{e.preventDefault();const topic=el('subject').value.trim();if(!topic){el('subject').value='';el('subject').reportValidity();return}phase='live';turn=0;paused=false;el('topic').textContent=topic;el('setup').hidden=true;el('session').hidden=false;el('phase').textContent='En movimiento';el('phase').tabIndex=-1;el('phase').focus();tick()};
+el('pause').onclick=()=>{paused=!paused;el('pause').textContent=paused?'Continuar':'Pausar';el('phase').textContent=paused?'En pausa':'En movimiento';if(paused)clearTimeout(timer);else next(500)};
+el('closeScene').onclick=beginClose;
+el('again').onclick=()=>{location.reload()};
+prepare();
+</script></body></html>
